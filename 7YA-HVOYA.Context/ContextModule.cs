@@ -10,10 +10,10 @@ namespace _7YA_HVOYA.Context
     {
         public override void CreateModule(IServiceCollection service)
         {
-            service.TryAddScoped<IFamilyHvoyaContext>(provider => provider.GetRequiredService<TimeTableContext>());
-            service.TryAddScoped<IDbRead>(provider => provider.GetRequiredService<TimeTableContext>());
-            service.TryAddScoped<IDbWriter>(provider => provider.GetRequiredService<TimeTableContext>());
-            service.TryAddScoped<IUnitOfWork>(provider => provider.GetRequiredService<TimeTableContext>());
+            service.TryAddScoped<IFamilyHvoyaContext>(provider => provider.GetRequiredService<FamilyHvoyaContext>());
+            service.TryAddScoped<IDbRead>(provider => provider.GetRequiredService<FamilyHvoyaContext>());
+            service.TryAddScoped<IDbWriter>(provider => provider.GetRequiredService<FamilyHvoyaContext>());
+            service.TryAddScoped<IUnitOfWork>(provider => provider.GetRequiredService<FamilyHvoyaContext>());
         }
     }
 }

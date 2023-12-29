@@ -2,14 +2,15 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace TimeTable203.Context
+
+namespace _7YA_HVOYA.Context
 {
     /// <summary>
     /// Файбрика для создания контекста в DesignTime (Миграции)
     /// </summary>
-    public class SampleContextFactory : IDesignTimeDbContextFactory<TimeTableContext>
+    public class SampleContextFactory : IDesignTimeDbContextFactory<FamilyHvoyaContext>
     {
-        public TimeTableContext CreateDbContext(string[] args)
+        public FamilyHvoyaContext CreateDbContext(string[] args)
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -17,11 +18,11 @@ namespace TimeTable203.Context
                 .Build();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            var options = new DbContextOptionsBuilder<TimeTableContext>()
+            var options = new DbContextOptionsBuilder<FamilyHvoyaContext>()
                 .UseSqlServer(connectionString)
                 .Options;
 
-            return new TimeTableContext(options);
+            return new FamilyHvoyaContext(options);
         }
     }
 }

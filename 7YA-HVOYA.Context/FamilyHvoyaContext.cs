@@ -2,11 +2,7 @@
 using _7YA_HVOYA.Context.Contracts;
 using _7YA_HVOYA.Context.Contracts.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Serilog;
 
 namespace _7YA_HVOYA.Context
 {
@@ -20,38 +16,54 @@ namespace _7YA_HVOYA.Context
     /// 4) dotnet ef database update --project TimeTable203.Context\TimeTable203.Context.csproj
     /// 5) dotnet ef database update [targetMigrationName] --TimeTable203.Context\TimeTable203.Context.csproj
     /// </remarks>
-    internal class FamilyHvoyaContext : DbContext,
+    public class FamilyHvoyaContext : DbContext,
         IFamilyHvoyaContext,
         IDbRead,
         IDbWriter,
         IUnitOfWork
     {
-        public DbSet<Thing> Things => throw new NotImplementedException();
+        public DbSet<Thing> Things { get; set; }
 
-        public DbSet<Storage> Storages => throw new NotImplementedException();
+        public DbSet<Storage> Storages { get; set; }
 
-        public DbSet<Client> Clients => throw new NotImplementedException();
+        public DbSet<Client> Clients { get; set; }
 
-        public DbSet<Cart> Carts => throw new NotImplementedException();
+        public DbSet<Cart> Carts { get; set; }
 
-        public DbSet<Accommodation> Accommodations => throw new NotImplementedException();
+        public DbSet<Accommodation> Accommodations { get; set; }
 
-        public DbSet<Order> Orders => throw new NotImplementedException();
+        public DbSet<Order> Orders { get; set; }
+
+        public FamilyHvoyaContext(DbContextOptions<FamilyHvoyaContext> options) : base (options)
+        {
+            Log.Information("Инициализирована бд");
+        }
 
         void IDbWriter.Add<TEntity>(TEntity entity) => base.Entry(entity).State = EntityState.Added;
 
-        void IDbWriter.Delete<TEntity>(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
+        void IDbWriter.Delete<TEntity>(TEntity entity) => base.Entry(entity).State = EntityState.Deleted;
 
         IQueryable<TEntity> IDbRead.Read<TEntity>() => base.Set<TEntity>()
                 .AsNoTracking()
                 .AsQueryable();
 
-        void IDbWriter.Update<TEntity>(TEntity entity)
+        void IDbWriter.Update<TEntity>(TEntity entity) => base.Entry(entity).State = EntityState.Modified;
+
+
+        async Task<int> IUnitOfWork.SaveChangesAsync(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            Log.Information("Идет сохранение данных в бд");
+            var count = await base.SaveChangesAsync(cancellationToken);
+            SkipTracker();
+            return count;
+        }
+
+        public void SkipTracker()
+        {
+            foreach (var entry in base.ChangeTracker.Entries().ToArray())
+            {
+                entry.State = EntityState.Detached;
+            }
         }
     }
 }
