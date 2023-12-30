@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -22,7 +22,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\7YA-HVOYA.Common\7YA-HVOYA.Common.csproj" />
+    <ProjectReference Include="..\7YA-HVOYA.Context.Configuration\7YA-HVOYA.Context.Configuration.csproj" />
     <ProjectReference Include="..\7YA-HVOYA.Context.Contracts\7YA-HVOYA.Context.Contracts.csproj" />
+    <ProjectReference Include="..\7YA-HVOYA.Shared\7YA-HVOYA.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -23,7 +23,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "7YA-HVOYA.Common.Entity", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "7YA-HVOYA.Context.Configuration", "7YA-HVOYA.Context.Configuration\7YA-HVOYA.Context.Configuration.csproj", "{C71295A6-6AD3-4552-B4D2-6BCEDA1865B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7YA-HVOYA.Shared", "7YA-HVOYA.Shared\7YA-HVOYA.Shared.csproj", "{E2F9357A-C0FD-49DA-9305-41E247A5618D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "7YA-HVOYA.Shared", "7YA-HVOYA.Shared\7YA-HVOYA.Shared.csproj", "{E2F9357A-C0FD-49DA-9305-41E247A5618D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7Ya-HVOYA.Context.Tests", "7Ya-HVOYA.Context.Tests\7Ya-HVOYA.Context.Tests.csproj", "{A3A4AA07-92ED-4178-A046-3C661CCB63F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7Ya-HVOYA.Repository.Tests", "7Ya-HVOYA.Repository.Tests\7Ya-HVOYA.Repository.Tests.csproj", "{970E6601-5628-4911-B455-A0EFEE661A9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7Ya-HVOYA.Service.Tests", "7Ya-HVOYA.Service.Tests\7Ya-HVOYA.Service.Tests.csproj", "{78539624-B662-47AB-9A63-F0920372BD52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7YA-HVOYA.API.Tests", "7YA-HVOYA.API.Tests\7YA-HVOYA.API.Tests.csproj", "{C34D94AB-5D19-4B41-8C06-F8398B36B806}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +83,22 @@ Global
 		{E2F9357A-C0FD-49DA-9305-41E247A5618D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2F9357A-C0FD-49DA-9305-41E247A5618D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2F9357A-C0FD-49DA-9305-41E247A5618D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3A4AA07-92ED-4178-A046-3C661CCB63F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3A4AA07-92ED-4178-A046-3C661CCB63F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3A4AA07-92ED-4178-A046-3C661CCB63F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3A4AA07-92ED-4178-A046-3C661CCB63F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{970E6601-5628-4911-B455-A0EFEE661A9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970E6601-5628-4911-B455-A0EFEE661A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970E6601-5628-4911-B455-A0EFEE661A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970E6601-5628-4911-B455-A0EFEE661A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78539624-B662-47AB-9A63-F0920372BD52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78539624-B662-47AB-9A63-F0920372BD52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78539624-B662-47AB-9A63-F0920372BD52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78539624-B662-47AB-9A63-F0920372BD52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C34D94AB-5D19-4B41-8C06-F8398B36B806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C34D94AB-5D19-4B41-8C06-F8398B36B806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C34D94AB-5D19-4B41-8C06-F8398B36B806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C34D94AB-5D19-4B41-8C06-F8398B36B806}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

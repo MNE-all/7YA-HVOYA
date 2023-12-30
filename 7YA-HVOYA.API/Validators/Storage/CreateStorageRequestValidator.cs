@@ -18,6 +18,12 @@ namespace _7YA_HVOYA.API.Validators.Storage
                 .NotNull()
                 .NotEmpty()
                 .WithMessage("Имя не должно быть пустым или null");
+
+            RuleFor(storage => storage.Address)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("Адрес не должен быть пустым или null");
+
         }
     }
 }

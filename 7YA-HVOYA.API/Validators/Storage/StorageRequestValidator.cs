@@ -12,10 +12,10 @@ namespace _7YA_HVOYA.API.Validators.Storage
                 .NotEmpty()
                 .WithMessage("Название не должно быть пустым или null");
 
-            RuleFor(storage => storage.Id)
+            RuleFor(storage => storage.Address)
                 .NotEmpty()
                 .NotNull()
-                .WithMessage("Id не должно быть пустым или null");
+                .WithMessage("Адрес не должен быть пустым или null");
         }
     }
 }

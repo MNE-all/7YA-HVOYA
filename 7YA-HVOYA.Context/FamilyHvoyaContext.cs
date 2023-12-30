@@ -1,4 +1,5 @@
 ﻿using _7YA_HVOYA.Common.Entity.InterfaceDB;
+using _7YA_HVOYA.Context.Configuration;
 using _7YA_HVOYA.Context.Contracts;
 using _7YA_HVOYA.Context.Contracts.Models;
 using Microsoft.EntityFrameworkCore;
@@ -37,6 +38,11 @@ namespace _7YA_HVOYA.Context
         public FamilyHvoyaContext(DbContextOptions<FamilyHvoyaContext> options) : base (options)
         {
             Log.Information("Инициализирована бд");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(IContextConfigurationAnchor).Assembly);
         }
 
         void IDbWriter.Add<TEntity>(TEntity entity) => base.Entry(entity).State = EntityState.Added;
