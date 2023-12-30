@@ -55,8 +55,8 @@ erDiagram
     Thing ||--o{ Accommodation: is
     Thing ||--o{ Order: is
     Thing ||--o{ Cart: is
-    CLient ||--o{ Cart: is
-    CLient ||--o{ Order: is
+    Client ||--o{ Cart: is
+    Client ||--o{ Order: is
 
   BaseAuditEntity {
         Guid ID
