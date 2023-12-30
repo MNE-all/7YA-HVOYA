@@ -7,4 +7,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\7YA-HVOYA.Common\7YA-HVOYA.Common.csproj" />
+    <ProjectReference Include="..\7YA-HVOYA.Context.Contracts\7YA-HVOYA.Context.Contracts.csproj" />
+    <ProjectReference Include="..\7YA-HVOYA.Repositories.Contracts\7YA-HVOYA.Repositories.Contracts.csproj" />
+    <ProjectReference Include="..\7YA-HVOYA.Shared\7YA-HVOYA.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

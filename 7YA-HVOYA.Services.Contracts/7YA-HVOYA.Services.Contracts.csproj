@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -6,5 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\7YA-HVOYA.Context.Contracts\7YA-HVOYA.Context.Contracts.csproj" />
+    <ProjectReference Include="..\7YA-HVOYA.Shared\7YA-HVOYA.Shared.csproj" />
+  </ItemGroup>
 
 </Project>

@@ -1,11 +1,4 @@
 ﻿using _7YA_HVOYA.Context.Contracts.Emuns;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace _7YA_HVOYA.Context.Contracts.Models
 {

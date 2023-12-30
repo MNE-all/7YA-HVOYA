@@ -7,4 +7,23 @@
     <RootNamespace>_7YA_HVOYA.API</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.8.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\7YA-HVOYA.Common\7YA-HVOYA.Common.csproj" />
+    <ProjectReference Include="..\7YA-HVOYA.Context\7YA-HVOYA.Context.csproj" />
+    <ProjectReference Include="..\7YA-HVOYA.Repositories\7YA-HVOYA.Repositories.csproj" />
+    <ProjectReference Include="..\7YA-HVOYA.Services\7YA-HVOYA.Services.csproj" />
+  </ItemGroup>
+
 </Project>
