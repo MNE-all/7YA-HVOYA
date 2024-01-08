@@ -15,7 +15,7 @@ namespace _7YA_HVOYA.API.Infrastructures
                 c.SwaggerDoc("Client", new OpenApiInfo { Title = "Сущность клиента", Version = "v1" });
                 c.SwaggerDoc("Thing", new OpenApiInfo { Title = "Сущность вещи", Version = "v1" });
 
-                var filePath = Path.Combine(AppContext.BaseDirectory, "FamilyHvoya.Api.xml");
+                var filePath = Path.Combine(AppContext.BaseDirectory, "7YA-HVOYA.API.xml");
                 c.IncludeXmlComments(filePath);
             });
         }

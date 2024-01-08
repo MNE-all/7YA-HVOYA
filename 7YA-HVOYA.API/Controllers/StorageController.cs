@@ -36,7 +36,7 @@ namespace _7YA_HVOYA.API.Controllers
 
 
         /// <summary>
-        /// Получить список всех дисциплин
+        /// Получить список всех складов
         /// </summary>
         [HttpGet]
         [ApiOk(typeof(IEnumerable<StorageResponse>))]
@@ -47,7 +47,7 @@ namespace _7YA_HVOYA.API.Controllers
         }
 
         /// <summary>
-        /// Получает дисциплину по идентификатору
+        /// Получает склад по идентификатору
         /// </summary>
         [HttpGet("{id:guid}")]
         [ApiOk(typeof(StorageResponse))]
@@ -59,7 +59,7 @@ namespace _7YA_HVOYA.API.Controllers
         }
 
         /// <summary>
-        /// Создаёт новую дисциплину
+        /// Создаёт новый склад
         /// </summary>
         [HttpPost]
         [ApiOk(typeof(StorageResponse))]
@@ -73,7 +73,7 @@ namespace _7YA_HVOYA.API.Controllers
         }
 
         /// <summary>
-        /// Редактирует имеющуюся дисциплину
+        /// Редактирует имеющийся склад
         /// </summary>
         [HttpPut]
         [ApiOk(typeof(StorageResponse))]
@@ -89,7 +89,7 @@ namespace _7YA_HVOYA.API.Controllers
         }
 
         /// <summary>
-        /// Удаляет имеющуюся дисциплину
+        /// Удаляет имеющийся склад
         /// </summary>
         [HttpDelete("{id:guid}")]
         [ApiOk(typeof(StorageResponse))]

@@ -1,4 +1,5 @@
-﻿using _7YA_HVOYA.Services.Contracts.Emuns;
+﻿using _7YA_HVOYA.Context.Contracts.Emuns;
+using _7YA_HVOYA.Services.Contracts.Emuns;
 
 namespace _7YA_HVOYA.Services.Contracts.Models
 {
@@ -17,16 +18,16 @@ namespace _7YA_HVOYA.Services.Contracts.Models
         /// </summary>
         public string Name { get; set; } = string.Empty;
         /// <inheritdoc cref="Categories"/>
-        public CategoriesModel Category { get; set; } = CategoriesModel.Hats;
+        public Categories Category { get; set; } = Categories.Hats;
 
         /// <inheritdoc cref="Genders"/>
-        public GendersModel? Gender { get; set; }
+        public Genders? Gender { get; set; }
 
         /// <inheritdoc cref="Seasons"/>
-        public SeasonsModel Season { get; set; } = SeasonsModel.Demi_season;
+        public Seasons Season { get; set; } = Seasons.Demi_season;
 
         /// <inheritdoc cref="Sizes"/>
-        public SizesModel Size { get; set; } = SizesModel.M;
+        public Sizes Size { get; set; } = Sizes.M;
 
         /// <summary>
         /// Цена
