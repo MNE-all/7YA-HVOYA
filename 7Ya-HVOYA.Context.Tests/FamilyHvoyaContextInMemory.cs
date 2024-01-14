@@ -6,7 +6,7 @@ using _7YA_HVOYA.Common.Entity.InterfaceDB;
 namespace _7YA_HVOYA.Context.Tests
 {
     /// <summary>
-    /// Класс <see cref="TimeTableContext"/> для тестов с базой в памяти. Один контекст на тест
+    /// Класс <see cref="FamilyHvoyaContext"/> для тестов с базой в памяти. Один контекст на тест
     /// </summary>
     public abstract class FamilyHvoyaContextInMemory : IAsyncDisposable
     {

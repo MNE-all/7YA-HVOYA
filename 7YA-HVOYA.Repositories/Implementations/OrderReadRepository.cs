@@ -2,15 +2,7 @@
 using _7YA_HVOYA.Common.Entity.Repositories;
 using _7YA_HVOYA.Context.Contracts.Models;
 using _7YA_HVOYA.Repositories.Contracts;
-using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace _7YA_HVOYA.Repositories.Implementations
 {
@@ -30,12 +22,13 @@ namespace _7YA_HVOYA.Repositories.Implementations
                 .OrderBy(x => x.Number)
                 .ToReadOnlyCollectionAsync(cancellationToken);
 
-        Task<Order?> IOrderReadRepository.GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        Task<IReadOnlyCollection<Order>> IOrderReadRepository.GetByClientIdAsync(Guid clientId, CancellationToken cancellationToken)
             => reader.Read<Order>()
-                .ById(id)
-                .FirstOrDefaultAsync(cancellationToken);
+                .NotDeletedAt()
+                .Where(x => x.ClientId == clientId)
+                .ToReadOnlyCollectionAsync(cancellationToken);
 
-        Task<IReadOnlyCollection<Order>> IOrderReadRepository.GetByIdsAsync(int number, CancellationToken cancellation)
+        Task<IReadOnlyCollection<Order>> IOrderReadRepository.GetByNumberAsync(int number, CancellationToken cancellation)
             => reader.Read<Order>()
                 .Where(x => x.Number == number)
                 .ToReadOnlyCollectionAsync(cancellation);

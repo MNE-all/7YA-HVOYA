@@ -4,11 +4,6 @@ using _7YA_HVOYA.Context.Contracts.Models;
 using _7YA_HVOYA.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _7YA_HVOYA.Repositories.Implementations
 {

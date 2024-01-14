@@ -10,6 +10,7 @@ namespace _7YA_HVOYA.Repositories.Contracts
         /// Получить список всех <see cref="Thing"/>
         /// </summary>
         Task<IReadOnlyCollection<Thing>> GetAllAsync(CancellationToken cancellationToken);
+
         /// <summary>
         /// Получить список всех <see cref="Thing"/> по <see langword="category"/> и 
         /// </summary>
@@ -19,5 +20,10 @@ namespace _7YA_HVOYA.Repositories.Contracts
         /// Получить <see cref="Thing"/> по идентификатору
         /// </summary>
         Task<Thing?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Получить список <see cref="Thing"/> по идентификаторам
+        /// </summary>
+        Task<Dictionary<Guid, Thing>> GetByIdsAsync(IEnumerable<Guid> ids, CancellationToken cancellation);
     }
 }

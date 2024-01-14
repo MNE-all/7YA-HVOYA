@@ -40,35 +40,35 @@ namespace _7YA_HVOYA.Services.Implementations
 
         async Task IStorageService.DeleteAsync(Guid id, CancellationToken cancellationToken)
         {
-            var targetDiscipline = await storageReadRepository.GetByIdAsync(id, cancellationToken);
-            if (targetDiscipline == null)
+            var targetStorage = await storageReadRepository.GetByIdAsync(id, cancellationToken);
+            if (targetStorage == null)
             {
                 throw new FamilyHvoyaEntityNotFoundException<Storage>(id);
             }
 
-            if (targetDiscipline.DeletedAt.HasValue)
+            if (targetStorage.DeletedAt.HasValue)
             {
                 throw new FamilyHvoyaInvalidOperationException($"Склад с идентификатором {id} уже удален");
             }
 
-            storageWriteRepository.Delete(targetDiscipline);
+            storageWriteRepository.Delete(targetStorage);
             await unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
         async Task<StorageModel> IStorageService.EditAsync(StorageModel source, CancellationToken cancellationToken)
         {
-            var targetDiscipline = await storageReadRepository.GetByIdAsync(source.Id, cancellationToken);
-            if (targetDiscipline == null)
+            var targetStorage = await storageReadRepository.GetByIdAsync(source.Id, cancellationToken);
+            if (targetStorage == null)
             {
                 throw new FamilyHvoyaEntityNotFoundException<Storage>(source.Id);
             }
 
-            targetDiscipline.Name = source.Name;
-            targetDiscipline.Address = source.Address;
-            storageWriteRepository.Update(targetDiscipline);
+            targetStorage.Name = source.Name;
+            targetStorage.Address = source.Address;
+            storageWriteRepository.Update(targetStorage);
 
             await unitOfWork.SaveChangesAsync(cancellationToken);
-            return mapper.Map<StorageModel>(targetDiscipline);
+            return mapper.Map<StorageModel>(targetStorage);
         }
 
         async Task<StorageModel> IStorageService.GetByIdAsync(Guid id, CancellationToken cancellationToken)

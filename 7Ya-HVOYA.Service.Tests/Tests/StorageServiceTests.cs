@@ -1,19 +1,18 @@
-﻿using AutoMapper;
-using FluentAssertions;
-using _7YA_HVOYA.Common.Entity.InterfaceDB;
-using _7YA_HVOYA.Context.Contracts.Models;
+﻿using _7YA_HVOYA.Context.Contracts.Models;
 using _7YA_HVOYA.Context.Tests;
 using _7YA_HVOYA.Repositories.Implementations;
 using _7YA_HVOYA.Services.Automappers;
 using _7YA_HVOYA.Services.Contracts.Exceptions;
 using _7YA_HVOYA.Services.Contracts.Interface;
 using _7YA_HVOYA.Services.Implementations;
+using AutoMapper;
+using FluentAssertions;
 using Xunit;
 
 namespace _7YA_HVOYA.Services.Tests.Tests
 {
     /// <summary>
-    /// Тесты для <see cref="IDisciplineService"/>
+    /// Тесты для <see cref="IStorageService"/>
     /// </summary>
     public class StorageServiceTests : FamilyHvoyaContextInMemory
     {
@@ -36,7 +35,7 @@ namespace _7YA_HVOYA.Services.Tests.Tests
         }
 
         /// <summary>
-        /// Получение дисциплины по идентификатору возвращает null
+        /// Получение склада по идентификатору возвращает null
         /// </summary>
         [Fact]
         public async Task GetByIdShouldReturnNull()
@@ -53,7 +52,7 @@ namespace _7YA_HVOYA.Services.Tests.Tests
         }
 
         /// <summary>
-        /// Получение дисциплины по идентификатору возвращает данные
+        /// Получение склада по идентификатору возвращает данные
         /// </summary>
         [Fact]
         public async Task GetByIdShouldReturnValue()
@@ -78,7 +77,7 @@ namespace _7YA_HVOYA.Services.Tests.Tests
         }
 
         /// <summary>
-        /// 
+        /// Успешное удаление склада по идентификатору 
         /// </summary>
         [Fact]
         public async Task DeleteShouldWork()

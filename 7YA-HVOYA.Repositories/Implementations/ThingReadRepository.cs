@@ -23,20 +23,27 @@ namespace _7YA_HVOYA.Repositories.Implementations
             Log.Information("Инициализирован абстракция IDbReader в классе DisciplineReadRepository");
         }
 
-        public Task<IReadOnlyCollection<Thing>> GetAllAsync(CancellationToken cancellationToken)
+        Task<IReadOnlyCollection<Thing>> IThingReadRepository.GetAllAsync(CancellationToken cancellationToken)
             => reader.Read<Thing>()
                 .NotDeletedAt()
                 .OrderBy(x => x.Category)
                 .ToReadOnlyCollectionAsync(cancellationToken);
 
-        public Task<IReadOnlyCollection<Thing>> GetAllByCategoryAsync(Categories category, CancellationToken cancellationToken)
+        Task<IReadOnlyCollection<Thing>> IThingReadRepository.GetAllByCategoryAsync(Categories category, CancellationToken cancellationToken)
             => reader.Read<Thing>()
-                .Where(x => x.Category == category)
+                .Where(x => x.Category == category && x.DeletedAt == null)
                 .ToReadOnlyCollectionAsync(cancellationToken);
 
-        public Task<Thing?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        Task<Thing?> IThingReadRepository.GetByIdAsync(Guid id, CancellationToken cancellationToken)
             => reader.Read<Thing>()
                 .ById(id)
                 .FirstOrDefaultAsync(cancellationToken);
+
+        Task<Dictionary<Guid, Thing>> IThingReadRepository.GetByIdsAsync(IEnumerable<Guid> ids, CancellationToken cancellation)
+            => reader.Read<Thing>()
+                .NotDeletedAt()
+                .ByIds(ids)
+                .OrderBy(x => x.Name)
+                .ToDictionaryAsync(key => key.Id, cancellation);
     }
 }

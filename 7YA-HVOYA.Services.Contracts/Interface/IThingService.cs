@@ -17,7 +17,7 @@ namespace _7YA_HVOYA.Services.Contracts.Interface
         /// <summary>
         /// Добавляет вещь
         /// </summary>
-        Task<ThingModel> AddAsync(ThingModel timeTable, CancellationToken cancellationToken);
+        Task<ThingModel> AddAsync(ThingModel thing, CancellationToken cancellationToken);
 
         /// <summary>
         /// Редактирует вещь

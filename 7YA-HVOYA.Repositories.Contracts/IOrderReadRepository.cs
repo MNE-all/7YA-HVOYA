@@ -15,13 +15,13 @@ namespace _7YA_HVOYA.Repositories.Contracts
         Task<IReadOnlyCollection<Order>> GetAllAsync(CancellationToken cancellationToken);
 
         /// <summary>
-        /// Получить <see cref="Order"/> по идентификатору
+        /// Получить список <see cref="Order"/> по идентификатору клиента
         /// </summary>
-        Task<Order?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+        Task<IReadOnlyCollection<Order>> GetByClientIdAsync(Guid clientId, CancellationToken cancellationToken);
         /// <summary>
         /// Получить список <see cref="Order"/> по номеру заказа
         /// </summary>
-        Task<IReadOnlyCollection<Order>> GetByIdsAsync(int number, CancellationToken cancellation);
+        Task<IReadOnlyCollection<Order>> GetByNumberAsync(int number, CancellationToken cancellation);
 
     }
 }

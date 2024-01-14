@@ -1,12 +1,16 @@
 ﻿using _7YA_HVOYA.Common.Entity.InterfaceDB;
+using _7YA_HVOYA.Context.Contracts.Emuns;
 using _7YA_HVOYA.Context.Contracts.Models;
 using _7YA_HVOYA.Repositories.Contracts;
+using _7YA_HVOYA.Services.Contracts.Exceptions;
 using _7YA_HVOYA.Services.Contracts.Interface;
 using _7YA_HVOYA.Services.Contracts.Models;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,7 +34,8 @@ namespace _7YA_HVOYA.Services.Implementations
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
         }
-        async Task<ThingModel> AddAsync(ThingModel thing, CancellationToken cancellationToken)
+
+        async Task<ThingModel> IThingService.AddAsync(ThingModel thing, CancellationToken cancellationToken)
         {
             var item = new Thing
             {
@@ -47,29 +52,57 @@ namespace _7YA_HVOYA.Services.Implementations
             return mapper.Map<ThingModel>(item);
         }
 
-        Task<ThingModel> IThingService.AddAsync(ThingModel timeTable, CancellationToken cancellationToken)
+        async Task IThingService.DeleteAsync(Guid id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var targetThing = await thingReadRepository.GetByIdAsync(id, cancellationToken);
+            if (targetThing == null)
+            {
+                throw new FamilyHvoyaEntityNotFoundException<Thing>(id);
+            }
+
+            if (targetThing.DeletedAt.HasValue)
+            {
+                throw new FamilyHvoyaInvalidOperationException($"Вещь с идентификатором {id} уже удалена");
+            }
+
+            thingWriteRepository.Delete(targetThing);
+            await unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        Task IThingService.DeleteAsync(Guid id, CancellationToken cancellationToken)
+        async Task<ThingModel> IThingService.EditAsync(ThingModel source, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var targetThing = await thingReadRepository.GetByIdAsync(source.Id, cancellationToken);
+            if (targetThing == null)
+            {
+                throw new FamilyHvoyaEntityNotFoundException<Thing>(source.Id);
+            }
+
+            targetThing.Name = source.Name;
+            targetThing.Category = source.Category;
+            targetThing.Season = source.Season;
+            targetThing.Gender = source.Gender;
+            targetThing.Price = source.Price;
+            targetThing.ImgURL = source.ImgURL;
+            thingWriteRepository.Update(targetThing);
+
+            await unitOfWork.SaveChangesAsync(cancellationToken);
+            return mapper.Map<ThingModel>(targetThing);
         }
 
-        Task<ThingModel> IThingService.EditAsync(ThingModel source, CancellationToken cancellationToken)
+        async Task<IEnumerable<ThingModel>> IThingService.GetAllAsync(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var result = await thingReadRepository.GetAllAsync(cancellationToken);
+            return mapper.Map<IEnumerable<ThingModel>>(result);
         }
 
-        Task<IEnumerable<ThingModel>> IThingService.GetAllAsync(CancellationToken cancellationToken)
+        async Task<ThingModel?> IThingService.GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
-        }
-
-        Task<ThingModel?> IThingService.GetByIdAsync(Guid id, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
+            var item = await thingReadRepository.GetByIdAsync(id, cancellationToken);
+            if (item == null)
+            {
+                throw new FamilyHvoyaEntityNotFoundException<Thing>(id);
+            }
+            return mapper.Map<ThingModel>(item);
         }
     }
 }
