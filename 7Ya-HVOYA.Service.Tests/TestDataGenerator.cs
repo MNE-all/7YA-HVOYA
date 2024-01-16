@@ -66,11 +66,13 @@ namespace _7YA_HVOYA.Services.Tests
             action?.Invoke(item);
             return item;
         }
-        static internal Cart Cart(Client client, Action<Cart>? action = null)
+        static internal Cart Cart(Client client, Thing thing, Action<Cart>? action = null)
         {
             var item = new Cart
             {
                 Id = Guid.NewGuid(),
+                ThingId = thing.Id,
+                ClientId = client.Id,
                 Amount = new Random().Next(4),
                 CreatedAt = DateTimeOffset.UtcNow,
                 CreatedBy = $"CreatedBy{Guid.NewGuid():N}",
@@ -82,12 +84,14 @@ namespace _7YA_HVOYA.Services.Tests
             return item;
         }
 
-        static internal Accommodation Accommodation(Action<Accommodation>? action = null)
+        static internal Accommodation Accommodation(Storage storage, Thing thing, Action<Accommodation>? action = null)
         {
             var item = new Accommodation
             {
                 Id = Guid.NewGuid(),
                 Amount = new Random().Next(100),
+                StorageId = storage.Id,
+                ThingId = thing.Id,
 
                 CreatedAt = DateTimeOffset.UtcNow,
                 CreatedBy = $"CreatedBy{Guid.NewGuid():N}",
@@ -99,12 +103,14 @@ namespace _7YA_HVOYA.Services.Tests
             return item;
         }
 
-        static internal Order Order(Action<Order>? action = null)
+        static internal Order Order(Client client, Thing thing, Action<Order>? action = null)
         {
             var item = new Order
             {
                 Id = Guid.NewGuid(),
                 Number = new Random().Next(1024),
+                ThingId = thing.Id,
+                ClientId = client.Id,
 
                 CreatedAt = DateTimeOffset.UtcNow,
                 CreatedBy = $"CreatedBy{Guid.NewGuid():N}",

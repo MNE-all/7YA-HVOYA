@@ -22,6 +22,12 @@ namespace _7YA_HVOYA.Repositories.Implementations
             Log.Information("Инициализирован абстракция IDbReader в классе AccommodationReadRepository");
         }
 
+        public Task<IReadOnlyCollection<Accommodation>> GetAllAsync(CancellationToken cancellationToken)
+            => reader.Read<Accommodation>()
+                .NotDeletedAt()
+                .OrderBy(x => x.StorageId)
+                .ToReadOnlyCollectionAsync(cancellationToken);
+
         public Task<IReadOnlyCollection<Accommodation>> GetAllByStorageNameAsync(string storageName, CancellationToken cancellationToken)
             => reader.Read<Accommodation>()
                 .NotDeletedAt()

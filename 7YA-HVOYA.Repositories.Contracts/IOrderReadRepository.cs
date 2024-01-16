@@ -22,6 +22,10 @@ namespace _7YA_HVOYA.Repositories.Contracts
         /// Получить список <see cref="Order"/> по номеру заказа
         /// </summary>
         Task<IReadOnlyCollection<Order>> GetByNumberAsync(int number, CancellationToken cancellation);
+        /// <summary>
+        /// Получить <see cref="Order"/> по идентификатору 
+        /// </summary>
+        Task<Order?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
 
     }
 }

@@ -20,10 +20,7 @@ namespace _7YA_HVOYA.Services.Contracts.Models
         /// Клиент
         /// </summary>
         public ClientModel Client { get; set; }
-        /// <summary>
-        /// Cвязь один ко многим
-        /// </summary>
-        public Guid? ClientId { get; set; }
+        
         /// <summary>
         /// Количество
         /// </summary>

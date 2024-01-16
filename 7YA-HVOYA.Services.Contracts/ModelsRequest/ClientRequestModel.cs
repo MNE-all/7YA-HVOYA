@@ -1,4 +1,5 @@
-﻿using _7YA_HVOYA.Services.Contracts.Emuns;
+﻿using _7YA_HVOYA.Context.Contracts.Emuns;
+using _7YA_HVOYA.Services.Contracts.Emuns;
 
 namespace _7YA_HVOYA.Services.Contracts.ModelsRequest
 {
@@ -23,7 +24,7 @@ namespace _7YA_HVOYA.Services.Contracts.ModelsRequest
         /// <summary>
         /// Пол
         /// </summary>
-        public GendersModel Gender { get; set; } = GendersModel.Male;
+        public Genders Gender { get; set; } = Genders.Male;
         /// <summary>
         /// Дата рождения
         /// </summary>

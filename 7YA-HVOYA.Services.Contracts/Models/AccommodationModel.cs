@@ -8,6 +8,7 @@ namespace _7YA_HVOYA.Services.Contracts.Models
 {
     public class AccommodationModel
     {
+        public Guid Id { get; set; }
         /// <summary>
         /// Вещь
         /// </summary>

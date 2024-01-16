@@ -2,6 +2,7 @@
 using _7YA_HVOYA.Common.Entity.Repositories;
 using _7YA_HVOYA.Context.Contracts.Models;
 using _7YA_HVOYA.Repositories.Contracts;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 namespace _7YA_HVOYA.Repositories.Implementations
@@ -32,5 +33,11 @@ namespace _7YA_HVOYA.Repositories.Implementations
             => reader.Read<Order>()
                 .Where(x => x.Number == number)
                 .ToReadOnlyCollectionAsync(cancellation);
+
+        Task<Order?> IOrderReadRepository.GetByIdAsync(Guid id, CancellationToken cancellationToken) 
+            => reader.Read<Order>()
+                .ById(id)
+                .FirstOrDefaultAsync(cancellationToken);
+
     }
 }

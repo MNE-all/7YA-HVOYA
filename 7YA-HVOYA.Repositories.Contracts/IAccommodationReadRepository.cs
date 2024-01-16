@@ -8,6 +8,10 @@ namespace _7YA_HVOYA.Repositories.Contracts
     public interface IAccommodationReadRepository
     {
         /// <summary>
+        /// Получить список всех <see cref="Accommodation"/> 
+        /// </summary>
+        Task<IReadOnlyCollection<Accommodation>> GetAllAsync(CancellationToken cancellationToken);
+        /// <summary>
         /// Получить список всех <see cref="Accommodation"/> находящихся на складе <see langword="storageName"/> 
         /// </summary>
         Task<IReadOnlyCollection<Accommodation>> GetAllByStorageNameAsync(string storageName, CancellationToken cancellationToken);

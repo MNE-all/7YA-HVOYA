@@ -27,7 +27,7 @@ namespace _7YA_HVOYA.Services.Contracts.Interface
         /// <summary>
         /// Изменяет размещение
         /// </summary>
-        Task<AccommodationModel> UpdateGroupAsync(AccommodationModel source, CancellationToken cancellationToken);
+        Task<AccommodationModel> EditAsync(AccommodationModel source, CancellationToken cancellationToken);
 
         /// <summary>
         /// Удаляет существующее размещение
