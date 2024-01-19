@@ -79,7 +79,7 @@ namespace _7YA_HVOYA.Services.Implementations
             return mapper.Map<CartModel>(targetStorage);
         }
 
-        async Task<IEnumerable<CartModel>> ICartService.GetAllAsync(DateTimeOffset targetDate, CancellationToken cancellationToken)
+        async Task<IEnumerable<CartModel>> ICartService.GetAllAsync(CancellationToken cancellationToken)
         {
             var result = await cartReadRepository.GetAllAsync(cancellationToken);
             return mapper.Map<IEnumerable<CartModel>>(result);

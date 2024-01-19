@@ -31,7 +31,7 @@ namespace _7YA_HVOYA.Context.Contracts.Models
         /// <summary>
         /// Дата рождения
         /// </summary>
-        public DateOnly? Birthday { get; set; }
+        public DateTimeOffset? Birthday { get; set; }
         /// <summary>
         /// Номер телефона
         /// </summary>

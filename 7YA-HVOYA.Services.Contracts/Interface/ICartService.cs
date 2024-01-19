@@ -12,7 +12,7 @@ namespace _7YA_HVOYA.Services.Contracts.Interface
         /// <summary>
         /// Получить список всех <see cref="CartModel"/>
         /// </summary>
-        Task<IEnumerable<CartModel>> GetAllAsync(DateTimeOffset targetDate, CancellationToken cancellationToken);
+        Task<IEnumerable<CartModel>> GetAllAsync(CancellationToken cancellationToken);
 
         /// <summary>
         /// Получить <see cref="TimeTableItemModel"/> по идентификатору

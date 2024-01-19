@@ -28,7 +28,7 @@ namespace _7YA_HVOYA.Services.Contracts.ModelsRequest
         /// <summary>
         /// Дата рождения
         /// </summary>
-        public DateOnly? Birthday { get; set; }
+        public DateTimeOffset? Birthday { get; set; }
         /// <summary>
         /// Номер телефона
         /// </summary>

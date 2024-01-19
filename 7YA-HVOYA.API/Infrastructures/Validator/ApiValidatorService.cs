@@ -35,8 +35,8 @@ namespace _7YA_HVOYA.API.Infrastructures.Validator
             Register<CreateCartRequestValidator>(clientReadRepository, thingReadRepository);
             Register<CartRequestValidator>(clientReadRepository, thingReadRepository);
 
-            Register<CreateOrderRequestValidator>(thingReadRepository, clientReadRepository);
-            Register<OrderRequestValidator>(thingReadRepository, clientReadRepository);
+            Register<CreateOrderRequestValidator>(clientReadRepository);
+            Register<OrderRequestValidator>(clientReadRepository);
         }
 
         ///<summary>
